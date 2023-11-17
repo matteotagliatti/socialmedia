@@ -1,5 +1,3 @@
-create sequence "public"."test_tenant_id_seq";
-
 create table "public"."bookmarks" (
     "id" uuid not null,
     "user_id" uuid,
@@ -45,8 +43,6 @@ create table "public"."profiles" (
 );
 
 
-alter table "public"."profiles" enable row level security;
-
 create table "public"."replies" (
     "id" uuid not null,
     "text" text not null,
@@ -54,15 +50,6 @@ create table "public"."replies" (
     "post_id" uuid,
     "reply_id" uuid
 );
-
-
-create table "public"."test_tenant" (
-    "id" integer not null default nextval('test_tenant_id_seq'::regclass),
-    "details" text
-);
-
-
-alter sequence "public"."test_tenant_id_seq" owned by "public"."test_tenant"."id";
 
 CREATE UNIQUE INDEX bookmark_unique ON public.bookmarks USING btree (user_id, post_id);
 
@@ -84,8 +71,6 @@ CREATE UNIQUE INDEX profiles_username_key ON public.profiles USING btree (userna
 
 CREATE UNIQUE INDEX replies_pkey ON public.replies USING btree (id);
 
-CREATE UNIQUE INDEX test_tenant_pkey ON public.test_tenant USING btree (id);
-
 alter table "public"."bookmarks" add constraint "bookmarks_pkey" PRIMARY KEY using index "bookmarks_pkey";
 
 alter table "public"."hashtags" add constraint "hashtags_pkey" PRIMARY KEY using index "hashtags_pkey";
@@ -99,8 +84,6 @@ alter table "public"."posts" add constraint "posts_pkey" PRIMARY KEY using index
 alter table "public"."profiles" add constraint "profiles_pkey" PRIMARY KEY using index "profiles_pkey";
 
 alter table "public"."replies" add constraint "replies_pkey" PRIMARY KEY using index "replies_pkey";
-
-alter table "public"."test_tenant" add constraint "test_tenant_pkey" PRIMARY KEY using index "test_tenant_pkey";
 
 alter table "public"."bookmarks" add constraint "bookmark_unique" UNIQUE using index "bookmark_unique";
 
@@ -170,29 +153,3 @@ begin
 end;
 $function$
 ;
-
-create policy "Public profiles are viewable by everyone."
-on "public"."profiles"
-as permissive
-for select
-to public
-using (true);
-
-
-create policy "Users can insert their own profile."
-on "public"."profiles"
-as permissive
-for insert
-to public
-with check ((auth.uid() = id));
-
-
-create policy "Users can update own profile."
-on "public"."profiles"
-as permissive
-for update
-to public
-using ((auth.uid() = id));
-
-
-
