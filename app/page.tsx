@@ -9,7 +9,7 @@ export default async function Index() {
 
   return (
     <>
-      <section className="lg:max-w-2xl mx-auto border-x border-x-secondary/20">
+      <section className="lg:max-w-2xl mx-auto lg:border-x lg:border-x-secondary/20">
         <Post />
         <Post />
         <Post />
