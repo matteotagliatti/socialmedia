@@ -1,9 +1,9 @@
 import Link from "next/link";
 import Button from "./Button";
 
-export default async function LoginBanner() {
+export default async function Banner() {
   return (
-    <section className="fixed bg-background border-t border-t-secondary/20 bottom-0 w-full h-10 flex justify-between items-center p-8 text-sm">
+    <section className="z-50 fixed bg-background border-t border-t-secondary/20 bottom-0 w-full h-10 flex justify-between items-center p-8 text-sm">
       <div>
         <span className="font-semibold text-primary">Social</span>, a community
         app.
