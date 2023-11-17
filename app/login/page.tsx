@@ -1,5 +1,5 @@
 import { createClient } from "@/utils/supabase/server";
-import { cookies, headers } from "next/headers";
+import { cookies } from "next/headers";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
@@ -28,7 +28,7 @@ export default function Login({
     return redirect("/");
   };
 
-  const signUp = async (formData: FormData) => {
+  /* const signUp = async (formData: FormData) => {
     "use server";
 
     const origin = headers().get("origin");
@@ -50,7 +50,7 @@ export default function Login({
     }
 
     return redirect("/login?message=Check email to continue sign in process");
-  };
+  }; */
 
   return (
     <div>
@@ -67,7 +67,6 @@ export default function Login({
           required
         />
         <button>Sign In</button>
-        <button formAction={signUp}>Sign Up</button>
         {searchParams?.message && <p>{searchParams.message}</p>}
       </form>
     </div>
