@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Button from "./Button";
+import { Button } from "./ui/button";
 
 export default async function Banner() {
   return (
@@ -13,7 +13,7 @@ export default async function Banner() {
           <Button>Login</Button>
         </Link>
         <Link href="/sign-up">
-          <Button outline={true}>Sign up</Button>
+          <Button variant={"outline"}>Sign up</Button>
         </Link>
       </div>
     </section>
