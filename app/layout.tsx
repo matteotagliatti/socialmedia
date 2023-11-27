@@ -1,4 +1,5 @@
 import { GeistSans } from "geist/font/sans";
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
 const defaultUrl = process.env.VERCEL_URL
@@ -20,6 +21,7 @@ export default function RootLayout({
     <html lang="en" className={GeistSans.className}>
       <body>
         <main>{children}</main>
+        <Toaster position="bottom-right" />
       </body>
     </html>
   );

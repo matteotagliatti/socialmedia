@@ -32,10 +32,10 @@ export default async function Index() {
       id: randomUUID(),
     });
 
-    if (error) {
-      console.log(error);
-      return;
-    }
+    return {
+      data: postData,
+      error,
+    };
   }
 
   return (
