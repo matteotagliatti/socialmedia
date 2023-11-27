@@ -18,18 +18,16 @@ export default function Post() {
         />
       </div>
       <div>
-        <div className="mb-1">
-          <p className="font-medium text-primary">
-            Nathan <span className="text-sm text-secondary">@nathan</span>
-          </p>
-        </div>
-        <p className="mb-4">
+        <p className="font-medium text-primary">
+          Nathan <span className="text-sm text-secondary">@nathan</span>
+        </p>
+        <p className="mb-2 text-sm">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit
           numquam, soluta eum cupiditate beatae enim dolores eligendi. Et, eius
           quae! Iste tenetur molestiae in. Excepturi ex non neque asperiores
           consequatur.
         </p>
-        <div className="flex gap-8 items-center">
+        <div className="flex gap-8 items-center text-sm">
           <div className="flex gap-2">
             <svg
               width="24"

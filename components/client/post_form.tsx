@@ -35,7 +35,7 @@ export default function PostForm({ submitPost }: { submitPost: any }) {
           alt=""
         />
       </div>
-      <div className="w-full flex flex-col justify-start items-start gap-4">
+      <div className="w-full flex flex-col justify-start items-start gap-3">
         <Textarea required className="text-primary" name="post" id="post" />
         <div className="self-end flex gap-2">
           <Button type="reset" variant={"outline"} ref={resetRef}>
