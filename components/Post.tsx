@@ -19,10 +19,9 @@ export default function Post() {
       </div>
       <div>
         <div className="mb-1">
-          <div>
-            <span className="font-medium text-primary">Nathan</span>
-          </div>
-          <span> @nathan</span>
+          <p className="font-medium text-primary">
+            Nathan <span className="text-sm text-secondary">@nathan</span>
+          </p>
         </div>
         <p className="mb-4">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit
