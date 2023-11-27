@@ -9,8 +9,15 @@ export default async function Index() {
   const cookieStore = cookies();
   const supabase = createClient(cookieStore);
 
-  const { data } = await supabase.auth.getUser();
-  const { user } = data;
+  const { data: userData } = await supabase.auth.getUser();
+  const { user } = userData;
+
+  const { data: posts, error } = await supabase.from("posts").select(`
+    *, 
+    profiles ( full_name, username )
+  `);
+
+  console.log(posts);
 
   async function submitPost(formData: FormData) {
     "use server";
@@ -42,11 +49,14 @@ export default async function Index() {
     <>
       <section className="lg:max-w-2xl mx-auto lg:border-x lg:border-x-secondary/20">
         {user ? <PostForm submitPost={submitPost} /> : null}
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
+        {posts?.map((post) => (
+          <Post
+            key={post.id}
+            text={post.text}
+            username={post.profiles?.username}
+            full_name={post.profiles?.full_name}
+          />
+        ))}
       </section>
       {user ? null : <Banner />}
     </>

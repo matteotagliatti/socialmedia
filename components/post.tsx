@@ -2,7 +2,13 @@ import user_profile_placeholder_img from "@/assets/img/user-profile-placeholder.
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Post() {
+interface PostProps {
+  text: string;
+  username: string;
+  full_name: string | null;
+}
+
+export default function Post({ text, full_name, username }: PostProps) {
   return (
     <Link
       href="test"
@@ -19,15 +25,10 @@ export default function Post() {
       </div>
       <div>
         <p className="font-medium text-primary">
-          Nathan <span className="text-sm text-secondary">@nathan</span>
+          {full_name} <span className="text-secondary">@{username}</span>
         </p>
-        <p className="mb-2 text-sm">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit
-          numquam, soluta eum cupiditate beatae enim dolores eligendi. Et, eius
-          quae! Iste tenetur molestiae in. Excepturi ex non neque asperiores
-          consequatur.
-        </p>
-        <div className="flex gap-8 items-center text-sm">
+        <p className="mb-2">{text}</p>
+        <div className="flex gap-8 items-center">
           <div className="flex gap-2">
             <svg
               width="24"
