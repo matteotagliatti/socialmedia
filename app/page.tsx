@@ -1,6 +1,6 @@
-import Banner from "@/components/Banner";
-import Post from "@/components/Post";
-import PostForm from "@/components/client/PostForm";
+import Banner from "@/components/banner";
+import PostForm from "@/components/client/post_form";
+import Post from "@/components/post";
 import { createClient } from "@/utils/supabase/server";
 import { randomUUID } from "crypto";
 import { cookies } from "next/headers";
